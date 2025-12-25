@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      # Use your Docker Hub username here
       DOCKER_IMAGE: richsudo/myapp
       DOCKER_TAG: ${{ github.sha }}
 
@@ -17,9 +18,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2️⃣ Debug secrets (optional)
-      - name: Debug Docker username
-        run: echo "Docker username is '${{ secrets.DOCKER_USERNAME }}'"
+      # 2️⃣ Run tests (optional)
+      - name: Run unit tests
+        run: |
+          echo "Running tests..."
+          # Replace this with your actual test command, e.g., npm test
+          echo "Tests passed!"
 
       # 3️⃣ Log in to Docker Hub
       - name: Log in to Docker Hub
@@ -38,6 +42,9 @@ jobs:
         run: |
           docker push $DOCKER_IMAGE:$DOCKER_TAG
 
-      # 6️⃣ (Optional) Deploy step
-      - name: Deploy
-        run: echo "Deploy step goes here"
+      # 6️⃣ Deploy to staging (placeholder)
+      - name: Deploy to Staging
+        run: |
+          echo "Deploy step placeholder."
+          echo "In a real scenario, this would deploy $DOCKER_IMAGE:$DOCKER_TAG to a staging server."
+
