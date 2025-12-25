@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DOCKER_IMAGE: richsudo/myapp
+      DOCKER_IMAGE: mydockerapp/myapp
       DOCKER_TAG: ${{ github.sha }}
 
     steps:
